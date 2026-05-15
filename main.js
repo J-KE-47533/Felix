@@ -1,19 +1,23 @@
 var Webflow = Webflow || [];
 Webflow.push(function () {
   
-  // 1. Dem Browser sagen, dass wir das ScrollTrigger Plugin nutzen wollen
+  // 1. Wanze: Läuft das Script überhaupt an?
+  console.log("🚀 Mein lokales Script ist gestartet!");
+
   gsap.registerPlugin(ScrollTrigger);
 
-  // 2. Die Scroll-Animation definieren
+  // 2. Wanze: Findet GSAP das Bild überhaupt?
+  const bild = document.querySelector(".hero-image");
+  console.log("📸 Habe ich das Bild gefunden?", bild);
+
   gsap.to(".hero-image", {
-    scale: 1.3,           // Vergrößert das Bild auf das 1.3-fache
-    ease: "none",         // Wichtig, damit die Animation nicht künstlich abbremst
-    
+    scale: 1.3,
+    ease: "none",
     scrollTrigger: {
-      trigger: ".header", // Der Container, der die Animation auslöst
-      start: "top top",   // Startet, wenn die Oberkante des Headers am oberen Bildschirmrand ist
-      end: "bottom top",  // Endet, wenn die Unterkante des Headers oben verschwindet
-      scrub: true         // Koppelt die Animation butterweich an dein Scrollrad
+      trigger: ".header",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
     }
   });
 
